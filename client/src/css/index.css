@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400&display=swap');
+
+* {
+  margin: 0;
+  font-family: "Epilogue";
+  color: #333;
+}
+
+/* Navbar */
+.navbar {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  max-width: 70vw;
+  margin: 0 auto;
+  border-bottom: 1px solid #333;
+}
+.navbar h1 {
+  color: #5ab9ae;
+}
+.navbar .links {
+  margin-left: auto;
+}
+.navbar a {
+  margin-left: 16px;
+  text-decoration: none;
+  padding: 6px;
+}
+.navbar a:hover {
+  color: #5ab9ae;
+}
+.content {
+  max-width: 60vw;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* Homepage */
+.home {
+  padding: 10px 16px;
+  margin: 20px 0;
+  border: 1px solid #5ab9ae;
+}
+
+/* Signup */
+.signup {
+  max-width: 20vw;
+  margin: 0 auto;
+  text-align: center;
+}
+.signup label {
+  text-align: left;
+  display: block;
+}
+.signup h2 {
+  font-size: 25px;
+  color: #5ab9ae;
+  margin-bottom: 30px;
+}
+.signup input, .signup textarea, .signup select {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 10px 0;
+  border: 1px solid #5ab9ae;
+  box-sizing: border-box;
+  display: block;
+}
+.signup button {
+  background: #5ab9ae;
+  color: #fff;
+  padding: 10px;
+  margin: 20px;
+  border: none;
+  width: 20%;
+  text-align: center;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.signup button:hover {
+  box-shadow: 0 0 10px #5ab9ae;
+}
