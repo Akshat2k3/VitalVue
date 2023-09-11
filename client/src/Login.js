@@ -1,25 +1,24 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
-const Signup = () => {
-    const [name, setName] = useState('');
+const Login = () => {
     const [email, setEmail] = useState('');
-    const [comment, setComment] = useState('');
+    const [password, setPassword] = useState('');
     const [isPending, setIsPending] = useState(false);
     const navigate = useNavigate();
-
+    
     const handleSubmit = (e) => {
         e.preventDefault();
-        const user = { name, email, comment };
+        const user = { email, password };
 
         setIsPending(true);
 
-        fetch('/api/information', {
+        fetch('/???/', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(user)
         }).then(() => {
-            console.log("New User Added");
+            console.log("User Logged In");
             setIsPending(false);
             navigate('/');
         })
@@ -27,15 +26,8 @@ const Signup = () => {
 
     return ( 
         <div className="logon">
-            <h2>Create Account</h2>
+            <h2>Login</h2>
             <form onSubmit={handleSubmit}>
-                <label>Name:</label>
-                <input 
-                    type="text"
-                    required
-                    value={ name }
-                    onChange={(e) => setName(e.target.value)}
-                />
                 <label>Email:</label>
                 <input 
                     type="text"
@@ -43,18 +35,18 @@ const Signup = () => {
                     value={ email }
                     onChange={(e) => setEmail(e.target.value)}
                 />
-                <label>Comment:</label>
+                <label>Password:</label>
                 <input 
-                    type="text"
+                    type="password"
                     required
-                    value={ comment }
-                    onChange={(e) => setComment(e.target.value)}
-                />                
+                    value={ password }
+                    onChange={(e) => setPassword(e.target.value)}
+                />
                 { !isPending && <button>Add</button> }
                 { isPending && <button disabled>Adding User...</button> }
             </form>
         </div>
      );
 }
-
-export default Signup;
+ 
+export default Login;

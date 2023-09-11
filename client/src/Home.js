@@ -1,7 +1,7 @@
 import Fetch from "./Fetch";
 
 const Home = () => {
-    const { data: users, isPending, error } = Fetch('/api/users');
+    const { data: users, isPending, error } = Fetch('/api/information');
 
     return ( 
         <div className="home">
@@ -9,7 +9,7 @@ const Home = () => {
             { isPending && <div>Loading...</div> }
             { users && users.map(user => (
                 <div key={user.id}>
-                    ID: { user.id }, Name: { user.name }
+                    ID: { user.id }, Name: { user.name }, Email: { user.email }, Comment: { user.comment }
                 </div>
             ))}            
         </div>
