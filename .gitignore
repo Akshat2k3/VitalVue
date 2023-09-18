@@ -21,4 +21,3 @@ client/yarn-error.log*
 
 # server dependencies
 /server/node_modules
-/server/pg.js

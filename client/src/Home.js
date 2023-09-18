@@ -1,7 +1,7 @@
 import Fetch from "./Fetch";
 
 const Home = () => {
-    const { data: users, isPending, error } = Fetch('/api/information');
+    const { data: users, isPending, error } = Fetch('/api/users');
 
     return ( 
         <div className="home">
