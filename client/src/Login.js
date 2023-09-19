@@ -2,18 +2,18 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
-    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [isPending, setIsPending] = useState(false);
     const navigate = useNavigate();
-    
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        const user = { email, password };
+        const user = { username, password };
 
         setIsPending(true);
 
-        fetch('/???/', {
+        fetch('/api/login', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(user)
@@ -32,8 +32,8 @@ const Login = () => {
                 <input 
                     type="text"
                     required
-                    value={ email }
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={ username }
+                    onChange={(e) => setUsername(e.target.value)}
                 />
                 <label>Password:</label>
                 <input 

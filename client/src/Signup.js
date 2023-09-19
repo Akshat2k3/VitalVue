@@ -2,19 +2,23 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
-    const [name, setName] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
-    const [comment, setComment] = useState('');
+    const [password, setPassword] = useState('');
+    const [gender, setGender] = useState('');
+    const [birthdate, setBirthdate] = useState('');
     const [isPending, setIsPending] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const user = { name, email, comment };
-
+        const fullName = `${firstName} ${lastName}`;
+        const user = { name: fullName, email, password, gender, birthdate };
+    
         setIsPending(true);
-
-        fetch('/api/information', {
+    
+        fetch('/api/register', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(user)
@@ -29,26 +33,48 @@ const Signup = () => {
         <div className="logon">
             <h2>Create Account</h2>
             <form onSubmit={handleSubmit}>
-                <label>Name:</label>
-                <input 
-                    type="text"
-                    required
-                    value={ name }
-                    onChange={(e) => setName(e.target.value)}
-                />
+                <div>
+                    <label>First Name:</label>
+                    <input 
+                        type="text"
+                        required
+                        value={ firstName }
+                        onChange={(e) => setFirstName(e.target.value)}
+                    />
+                    <label>Last Name:</label>
+                    <input 
+                        type="text"
+                        required
+                        value={ lastName }
+                        onChange={(e) => setLastName(e.target.value)}
+                    />
+                </div>
                 <label>Email:</label>
                 <input 
-                    type="text"
+                    type="email"
                     required
                     value={ email }
                     onChange={(e) => setEmail(e.target.value)}
                 />
-                <label>Comment:</label>
+                <label>Password:</label>
                 <input 
-                    type="text"
+                    type="password"
                     required
-                    value={ comment }
-                    onChange={(e) => setComment(e.target.value)}
+                    value={ password }
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                <label>Gender:</label>
+                <select value={gender} onChange={(e) => setGender(e.target.value)}>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+                <label>Birthdate:</label>
+                <input 
+                    type="date"
+                    required
+                    value={ birthdate }
+                    onChange={(e) => setBirthdate(e.target.value)}
                 />                
                 { !isPending && <button>Add</button> }
                 { isPending && <button disabled>Adding User...</button> }
